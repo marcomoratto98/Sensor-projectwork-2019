@@ -18,12 +18,21 @@ namespace DataReader
                 new VirtualTemperatureSensor()
             };
 
+            // configure Redis
+            var redis = new RedisClient("127.0.0.1");
+
             while (true)
             {
                 foreach (ISensor sensor in sensors)
                 {
-                    Console.WriteLine(sensor.ToJson());
+                    // get current sensor value
+                    var data = sensor.ToJson();
+                    Console.WriteLine(data);
 
+                    // push to redis queue
+                    redis.LPush("sensors_data", data);
+
+                    // wait 1 second
                     System.Threading.Thread.Sleep(1000);
 
                 }
