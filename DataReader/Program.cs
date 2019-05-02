@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DataReader.Sensors;
 using CSRedis;
+using System.Windows.Forms;
 
 namespace DataReader
 {
@@ -12,10 +13,12 @@ namespace DataReader
     {
         static void Main(string[] args)
         {
+            Application.Run(new Principale());
+
             // init sensors
             List<ISensor> sensors = new List<ISensor>
             {
-                new VirtualTemperatureSensor()
+                new VirtualDistanceSensor()
             };
 
             // configure Redis
@@ -32,11 +35,10 @@ namespace DataReader
                     // push to redis queue
                     redis.LPush("sensors_data", data);
 
-                    // wait 1 second
-                    System.Threading.Thread.Sleep(1000);
+                    // wait 10 second
+                    System.Threading.Thread.Sleep(200);
 
                 }
-
             }
         }
     }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace DataReader.Sensors
 {
-    interface ITemperatureSensor
+    interface IDoorSensor
     {
-        void SetTemperature(decimal temperature);
-        decimal GetTemperature();
+        void SetDoor(decimal people);
+        decimal GetPeopleNumber();
     }
 }
