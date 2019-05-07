@@ -13,31 +13,33 @@ namespace DataReader
     {
         static void Main(string[] args)
         {
-            Application.Run(new Principale());
-
-            // init sensors
             List<ISensor> sensors = new List<ISensor>
             {
-                new VirtualDistanceSensor()
+                new VirtualDataSensor()
             };
 
-            // configure Redis
             var redis = new RedisClient("127.0.0.1");
+            Random rnd = new Random();
 
             while (true)
             {
                 foreach (ISensor sensor in sensors)
                 {
-                    // get current sensor value
-                    var data = sensor.ToJson();
+                    var num = rnd.Next(1, 100);
+                    var data = "";
+
+                    if (num > 80 && num < 100)
+                    {
+                        sensor.SetPorte(true);
+                    }
+                    else
+                    {
+                        sensor.SetPorte(false);
+                    }
+                    data = sensor.ToJson();
                     Console.WriteLine(data);
-
-                    // push to redis queue
                     redis.LPush("sensors_data", data);
-
-                    // wait 10 second
-                    System.Threading.Thread.Sleep(200);
-
+                    System.Threading.Thread.Sleep(10000);
                 }
             }
         }

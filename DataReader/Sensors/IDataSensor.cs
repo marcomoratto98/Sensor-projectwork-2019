@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 
 namespace DataReader.Sensors
 {
-    interface IDoorSensor
-    {
-        void SetDoor(decimal people);
+     interface IDataSensor
+     {
+        void SetDistance(decimal distance);
+        decimal GetDistanceN();
+        decimal GetDistanceE();
         decimal GetPeopleNumber();
     }
 }

@@ -9,5 +9,6 @@ namespace DataReader.Sensors
     interface ISensor
     {
         string ToJson();
+        void SetPorte(bool apertura);
     }
 }
