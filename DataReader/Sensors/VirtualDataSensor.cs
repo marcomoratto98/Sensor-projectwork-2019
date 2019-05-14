@@ -10,33 +10,29 @@ namespace DataReader.Sensors
     {
         private decimal n = 0;
         private bool aperturaPorte = false;
+        private Random random = new Random();
         public void SetDistance(decimal distance)
         { }
 
         public decimal GetDistanceN()
         {
-            Random random = new Random();
             return new decimal(random.Next(100, 999));
         }
 
         public decimal GetDistanceE()
         {
-            Random random = new Random();
             return new decimal(random.Next(100, 999));
         }
         public decimal GetPeopleNumber()
         {
-            Random random = new Random();
             return new decimal(random.Next(1, 15));
         }
         public decimal GetAutobusNumber()
         {
-            Random random = new Random();
             return new decimal(random.Next(1, 3));
         }
         public string GetLinea()
         {
-            Random random = new Random();
             decimal x = new decimal(random.Next(0, 2));
             if (x % 2 == 0)
                 return "2";
@@ -54,7 +50,7 @@ namespace DataReader.Sensors
 
         public string ToJson()
         {
-            return "{\"distance\":[\"46.000" + GetDistanceN() + "\",\"" + "13.000" + GetDistanceE() + "\"], \"people\":\"" + n + "\",\"date\":\"" + DateTime.Now + "\",\"porte\":\"" + aperturaPorte + "\",\"numeroAutobus\":\"" + GetAutobusNumber() + "\",\"linea\":\"" + GetLinea() + "\"}";
+            return "{\"distance\":[\"46.000" + GetDistanceN() + "\",\"" + "13.000" + GetDistanceE() + "\"], \"people\":\"" + n + "\",\"date\":\"" + DateTime.Now + "\",\"porte\":\"" + aperturaPorte + "\",\"nautobus\":\"" + GetAutobusNumber() + "\",\"linea\":\"" + GetLinea() + "\"}";
         }
     }
 }
