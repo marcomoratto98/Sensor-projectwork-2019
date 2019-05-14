@@ -50,7 +50,7 @@ namespace DataReader.Sensors
 
         public string ToJson()
         {
-            return "{\"distance\":[\"46.000" + GetDistanceN() + "\",\"" + "13.000" + GetDistanceE() + "\"], \"people\":\"" + n + "\",\"date\":\"" + DateTime.Now + "\",\"porte\":\"" + aperturaPorte + "\",\"nautobus\":\"" + GetAutobusNumber() + "\",\"linea\":\"" + GetLinea() + "\"}";
+            return "{\"distance\":[\"46.000" + GetDistanceN() + "\",\"" + "13.000" + GetDistanceE() + "\"], \"people\": " + n + ",\"date\":\"" + DateTime.Now + "\",\"porte\": " + aperturaPorte.ToString().ToLower() + ",\"nautobus\": " + GetAutobusNumber() + ",\"linea\": " + GetLinea() + "}";
         }
     }
 }
