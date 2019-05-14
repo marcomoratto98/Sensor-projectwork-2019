@@ -20,14 +20,14 @@ namespace DataSender
             {
                     try
                     {
-                        var httpWebRequestData = (HttpWebRequest)WebRequest.Create("http://localhost:3000/api/distance/");
+                        var httpWebRequestData = (HttpWebRequest)WebRequest.Create("http://localhost:3000/api/data/");
                         httpWebRequestData.ContentType = "application/json";  
                         httpWebRequestData.Method = "POST";
 
                         using (var streamWriter = new StreamWriter(httpWebRequestData.GetRequestStream()))
                         {
-                            string distanceJson = redis.BLPop(30, "sensors_data");
-                            streamWriter.Write(distanceJson);
+                            string dataJson = redis.BLPop(30, "sensors_data");
+                            streamWriter.Write(dataJson);
                             streamWriter.Flush();
                             streamWriter.Close();
                         
