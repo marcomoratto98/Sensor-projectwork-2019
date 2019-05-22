@@ -6,7 +6,7 @@ git clone https://github.com/VaporMontey/Sensor-projectwork-2019.git
 
 ```
 ## Configuration
-Premessa: tutte le impostazioni vanno cambiate nel file configuration.txt
+Premessa: tutte le impostazioni vanno cambiate nel file config.txt
 
 1. Settare l'indirizzo url delle API 
 2. Settare numero linea degli autobus
