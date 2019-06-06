@@ -25,4 +25,4 @@ Prerequisiti:
 5. Avviare il *DataSender* per invio dei dati a *Redis*
 
 ## Changelog
-Introduzione multi-threading e pulizia generae del codice
+Introduzione multi-threading e pulizia generale del codice
