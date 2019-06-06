@@ -6,7 +6,7 @@ git clone https://github.com/VaporMontey/Sensor-projectwork-2019.git
 
 ```
 ## Configuration
-Premessa: tutte le impostazioni vanno cambiate nel file config.txt
+Premessa: tutte le impostazioni vanno cambiate nel file App.config
 
 1. Settare l'indirizzo url delle API 
 2. Settare numero linea degli autobus
@@ -25,4 +25,4 @@ Prerequisiti:
 5. Avviare il *DataSender* per invio dei dati a *Redis*
 
 ## Changelog
-
+Introduzione multi-threading e pulizia generale del codice
