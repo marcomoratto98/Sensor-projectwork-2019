@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DataReader.Sensors
 {
-    class VirtualDataSensor: IDataSensor, ISensor
+    class VirtualDataSensor : IDataSensor, ISensor
     {
         private decimal n = 0;
         private bool aperturaPorte = false;
         private Random random = new Random();
+        
         public void SetDistance(decimal distance)
         { }
 
@@ -27,18 +29,6 @@ namespace DataReader.Sensors
         {
             return new decimal(random.Next(1, 15));
         }
-        public decimal GetAutobusNumber()
-        {
-            return new decimal(random.Next(1, 3));
-        }
-        public string GetLinea()
-        {
-            decimal x = new decimal(random.Next(0, 2));
-            if (x % 2 == 0)
-                return "2";
-            else
-                return "1";
-        }
         public void SetPorte(bool apertura)
         {
             if (apertura)
@@ -50,7 +40,7 @@ namespace DataReader.Sensors
 
         public string ToJson()
         {
-            return "{\"distance\":[\"46.000" + GetDistanceN() + "\",\"" + "13.000" + GetDistanceE() + "\"], \"people\": " + n + ",\"date\":\"" + DateTime.Now + "\",\"porte\": " + aperturaPorte.ToString().ToLower() + ",\"nautobus\": " + GetAutobusNumber() + ",\"linea\": " + GetLinea() + "}";
+            return "\"distance\":[\"46.000" + GetDistanceN() + "\",\"" + "13.000" + GetDistanceE() + "\"], \"people\": " + n + ",\"date\":\"" + DateTime.Now + "\",\"porte\": " + aperturaPorte.ToString().ToLower() + "}";
         }
     }
 }

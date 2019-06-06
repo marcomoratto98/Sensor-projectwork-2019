@@ -5,13 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using DataReader.Sensors;
 using CSRedis;
-using System.Windows.Forms;
+using System.Threading;
+using System.Configuration;
 
 namespace DataReader
 {
     class Program
     {
         static void Main(string[] args)
+        {
+            int numBus = int.Parse(ConfigurationManager.AppSettings["NAUTOBUS"]);
+            int numLinea = int.Parse(ConfigurationManager.AppSettings["NLINEE"]);
+            Random rnd = new Random();
+            Thread[] threads = new Thread[numBus];
+
+            for(int i=0; i<numBus; i++)
+            {
+                threads[i] = new Thread(() => Bus(i, rnd.Next(0, numLinea)));
+                threads[i].Start();
+                Thread.Sleep(1000);
+            }
+        }
+
+        public static void Bus(int id, int l)
         {
             List<ISensor> sensors = new List<ISensor>
             {
@@ -36,10 +52,10 @@ namespace DataReader
                     {
                         sensor.SetPorte(false);
                     }
-                    data = sensor.ToJson();
+                    data = "{\"nautobus\": " + id + ",\"linea\": " + l + "," + sensor.ToJson();
                     Console.WriteLine(data);
                     redis.LPush("sensors_data", data);
-                    System.Threading.Thread.Sleep(10000);
+                    Thread.Sleep(10000);
                 }
             }
         }

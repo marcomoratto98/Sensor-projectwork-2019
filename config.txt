@@ -1,3 +1,10 @@
-URLAPI:
-NLINEA:
-NAUTOBUS:
+ Console.WriteLine("Quanti autobus vuoi gestire? ");
+            int nBus = Convert.ToInt32(Console.ReadLine());
+            Thread[] buses = new Thread[nBus];
+            for (int i = 0; i < nBus; i++)
+            {
+                buses[i] = new Thread(Bus);
+                buses[i].Start();
+                Thread.Sleep(100);
+
+            }
