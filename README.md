@@ -14,6 +14,7 @@ Premessa: tutte le impostazioni vanno cambiate nel file config.txt
 
 ## Operating
 Prerequisiti: 
+- Attivare *Hyper-V* sulla versione di Windows usata (se viene usato Windows)
 - *Docker* con container di *Redis* nominato `pw-redis`
 - *Visual Studio 2019* (o versioni precedenti)
 - API con annessi i prerequisiti (vedi readme API)
